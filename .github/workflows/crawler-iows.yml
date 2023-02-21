@@ -11,6 +11,7 @@ jobs:
       run: docker-compose -f docker-compose.yml build crawler
     - name: crawl
       run: |
+        mkdir -p data/iows
         touch data/iows/$(date -u +"%Y-%m-%d").jsonlines.gz;
         tmp_file=$(mktemp)
         docker-compose -f docker-compose.yml run --user "$(id -u):$(id -g)" --volume $tmp_file:/tmp/result.jsonlines --entrypoint=/bin/ash crawler -c "scrapy crawl --loglevel=INFO iows -o /tmp/result.jsonlines"
