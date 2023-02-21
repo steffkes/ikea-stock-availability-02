@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
       with:
-        python-version: "3.7.7"
+        python-version: "3.9.16"
     - name: compute game data
       run: python game-data.py $(date +"%Y-%m-%d")
     - uses: stefanzweifel/git-auto-commit-action@v4
